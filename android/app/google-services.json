@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "938837501508",
+    "project_id": "mynotes-chandu",
+    "storage_bucket": "mynotes-chandu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938837501508:android:015da645150ccaffd57e11",
+        "android_client_info": {
+          "package_name": "com.himavarshan.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938837501508-k9rvqountb17n9fcs9lipc832tqiu759.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1399MmHSAmdZXQ1fQ6ZjkUMf5BmkP-fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938837501508-k9rvqountb17n9fcs9lipc832tqiu759.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
