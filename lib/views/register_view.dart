@@ -35,7 +35,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register"),
+        title: const Text("Register"),
       ),
       body: SafeArea(
         child: Center(
@@ -131,13 +131,13 @@ class _RegisterViewState extends State<RegisterView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Already have an Account"),
+                const Text("Already have an Account"),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context)
                         .pushNamedAndRemoveUntil('/login/', (route) => false);
                   },
-                  child: Text("Login Here"),
+                  child: const Text("Login Here"),
                 ),
               ],
             ),
