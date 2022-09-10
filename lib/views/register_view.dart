@@ -1,12 +1,7 @@
-// ignore_for_file: avoid_log, unused_import
-
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import '../firebase_options.dart';
+import 'package:mynotes/constants/routes.dart';
+import 'package:mynotes/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -102,18 +97,42 @@ class _RegisterViewState extends State<RegisterView> {
                   final email = _email.text;
                   final password = _password.text;
                   try {
-                    final userCredential = await FirebaseAuth.instance
-                        .createUserWithEmailAndPassword(
-                            email: email, password: password);
-                    log(userCredential.toString());
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: email,
+                      password: password,
+                    );
+                    final user = FirebaseAuth.instance.currentUser;
+                    user?.sendEmailVerification();
+                    Navigator.of(context).pushNamed(
+                      verifyEmailRoute,
+                    );
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
-                      log("Weak Password");
+                      await showErrorDialog(
+                        context,
+                        "Weak Password",
+                      );
                     } else if (e.code == 'invalid-email') {
-                      log("Try Using a valid Email");
+                      await showErrorDialog(
+                        context,
+                        "Try Using a valid Email",
+                      );
                     } else if (e.code == 'email-already-in-use') {
-                      log("I guess you already have a account");
+                      await showErrorDialog(
+                        context,
+                        "Email already in use",
+                      );
+                    } else {
+                      await showErrorDialog(
+                        context,
+                        "Error ${e.code}",
+                      );
                     }
+                  } catch (e) {
+                    await showErrorDialog(
+                      context,
+                      e.toString(),
+                    );
                   }
                 },
                 child: Padding(
