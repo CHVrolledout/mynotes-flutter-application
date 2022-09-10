@@ -1,4 +1,6 @@
-// ignore_for_file: avoid_print, prefer_const_constructors
+// ignore_for_file: avoid_log, prefer_const_constructors
+
+import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,7 @@ class _EmailVerifyViewState extends State<EmailVerifyView> {
             TextButton(
                 onPressed: () async {
                   final user = FirebaseAuth.instance.currentUser;
-                  print(user);
+                  log(user.toString());
                   await user?.sendEmailVerification();
                 },
                 child: const Text("Verify Email")),
