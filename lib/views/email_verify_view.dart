@@ -1,10 +1,6 @@
-// ignore_for_file: avoid_log, prefer_const_constructors
-
-import 'dart:developer';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mynotes/constants/routes.dart';
+import 'package:mynotes/services/auth/auth_service.dart';
 
 class EmailVerifyView extends StatefulWidget {
   const EmailVerifyView({super.key});
@@ -17,7 +13,7 @@ class _EmailVerifyViewState extends State<EmailVerifyView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Verify Email")),
+      appBar: AppBar(title: const Text("Verify Email")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -26,14 +22,12 @@ class _EmailVerifyViewState extends State<EmailVerifyView> {
                 "We have sent a verification email to your email id please verify it"),
             TextButton(
                 onPressed: () async {
-                  final user = FirebaseAuth.instance.currentUser;
-                  log(user.toString());
-                  await user?.sendEmailVerification();
+                  await AuthService.firebase().sendEmailVerification();
                 },
                 child: const Text("Resend Verification mail")),
             TextButton(
                 onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
+                  await AuthService.firebase().logOut();
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     registerRoute,
                     (route) => false,
