@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mynotes/services/auth/auth_exceptions.dart';
 import 'package:mynotes/services/auth/auth_provider.dart';
 import 'package:mynotes/services/auth/auth_user.dart';
@@ -62,7 +61,7 @@ void main() {
       },
     );
 
-    test('Logged in user should be able to get verfied', () {
+    test('Logged in user should be able to get verified', () {
       provider.sendEmailVerification();
       final user = provider.currentUser;
       expect(user, isNotNull);
