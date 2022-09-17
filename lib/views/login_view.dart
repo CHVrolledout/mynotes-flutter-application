@@ -49,16 +49,6 @@ class _LoginViewState extends State<LoginView> {
                 autocorrect: true,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                        width: 2, color: Color.fromARGB(255, 255, 132, 0)),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(
-                        width: 1,
-                      )),
                   labelText: "Email",
                 ),
               ),
@@ -70,16 +60,6 @@ class _LoginViewState extends State<LoginView> {
                 enableSuggestions: false,
                 autocorrect: false,
                 decoration: const InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(
-                        width: 2, color: Color.fromARGB(255, 255, 132, 0)),
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide(
-                        width: 1,
-                      )),
                   labelText: "Password",
                 ),
               ),
@@ -92,8 +72,6 @@ class _LoginViewState extends State<LoginView> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: const BorderSide(color: Colors.blue))),
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
                 ),
                 onPressed: () async {
                   final email = _email.text;
