@@ -48,8 +48,13 @@ class _LoginViewState extends State<LoginView> {
                 enableSuggestions: true,
                 autocorrect: true,
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Email",
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 2, color: Color.fromARGB(255, 56, 141, 245)),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ),
             ),
@@ -59,20 +64,23 @@ class _LoginViewState extends State<LoginView> {
                 controller: _password,
                 enableSuggestions: false,
                 autocorrect: false,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Password",
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 2, color: Color.fromARGB(255, 56, 141, 245)),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
-              child: TextButton(
-                style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: const BorderSide(color: Colors.blue))),
-                ),
+              padding: const EdgeInsets.only(top: 10),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                ).copyWith(elevation: ButtonStyleButton.allOrNull(10.0)),
                 onPressed: () async {
                   final email = _email.text;
                   final password = _password.text;
@@ -110,16 +118,13 @@ class _LoginViewState extends State<LoginView> {
                     );
                   }
                 },
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(45, 3, 35, 3),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text(
-                        "Login",
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                    ],
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(75, 10, 75, 10),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 25),
                   ),
                 ),
               ),
